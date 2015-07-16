@@ -1,17 +1,10 @@
-#gulp-download
+#***DEPRECATED***
 
-[Request](https://github.com/mikeal/request) wrapper for gulp, allowing you to download files via http/https.
+If you want to download a file with gulp, just `npm install --save-dev request vinyl-source-stream` and put this in your gulpfile:
 
-##Installation
-
-	npm install gulp-download
-	
-##Usage
-
-	var download = require("gulp-download");
-	
-	download(url)
-		.pipe(gulp.dest("downloads/"));
-		
-Url: Either a url string or an array of url strings or object with keys: file, url or array of these objects. The file key allows you to define the destination file name and the url is the dowonload url.
-
+    var request = require('request');
+    var source = require('vinyl-source-stream');
+    
+    request(url)
+        .pipe(source('filename.txt'))
+        .pipe(gulp.dest('downloads'));
